@@ -1,0 +1,7 @@
+import os
+
+CH_HOST = os.getenv("CLICKHOUSE_HOST")
+CH_PORT = os.getenv("CLICKHOUSE_PORT")
+CH_DATABASE = os.getenv("CLICKHOUSE_DB_NAME")
+CH_USER = os.getenv("CLICKHOUSE_USER")
+CH_PASSWORD = os.getenv("CLICKHOUSE_PASSWORD")

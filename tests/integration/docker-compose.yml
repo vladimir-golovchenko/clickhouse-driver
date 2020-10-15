@@ -1,0 +1,22 @@
+version: "2.4"
+
+networks:
+  internal:
+    driver: bridge
+
+services:
+  clickhouse:
+    image: yandex/clickhouse-server:latest
+    networks: {internal: {aliases: [test]}}
+
+  test:
+    build: .
+    networks: {internal: {aliases: [test]}}
+    depends_on:
+      clickhouse:
+        condition: service_started
+    command: pytest -vv -s --cov=. --cov-config ./tests/.coveragerc --cov-report xml:/workspace/coverage.xml --junitxml=/workspace/tests.xml
+    volumes:
+      - '.:/workspace'
+    env_file:
+      - test.env

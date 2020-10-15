@@ -1,0 +1,6 @@
+[run]
+omit =
+    events/*
+    tests/*
+    config.py
+    main.py
